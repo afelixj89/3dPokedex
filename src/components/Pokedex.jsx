@@ -1,40 +1,8 @@
 import { useGLTF } from "@react-three/drei";
-import { useState, useEffect } from "react";
-import * as THREE from "three";
+
 
 const Pokedex = (props) => {
   const { nodes, materials } = useGLTF("/assets/pokedex.glb");
-  const [pokemonId, setPokemonId] = useState("pikachu");
-  const [pokemon, setPokemon] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(
-          `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
-        );
-        const data = await res.json();
-        setPokemon(data);
-      } catch (error) {
-        console.error("Error fetching the Pokemon Data", error);
-      }
-    };
-    fetchData();
-  }, [pokemonId]);
-
-  useEffect(() => {
-    if (pokemon && materials.Pantallas) {
-      console.log(
-        "Updating screen texture with sprite URL:",
-        pokemon.sprites.front_default
-      );
-      const textureLoader = new THREE.TextureLoader();
-      textureLoader.load(pokemon.sprites.front_default, (texture) => {
-        materials.Pantallas.map = texture;
-        materials.Pantallas.needsUpdate = true;
-      });
-    }
-  }, [pokemon, materials]);
 
   return (
     <group {...props} dispose={null}>
