@@ -5,7 +5,7 @@ import { Html, PerspectiveCamera, OrbitControls } from "@react-three/drei";
 import "../index.css";
 
 const Hero = () => {
-    cosnt [scale, setScale] = useState(25)
+    const [scale, setScale] = useState(25)
   return (
     <section className="w-[100vw] h-[100vh] bg-gray-200">
     
