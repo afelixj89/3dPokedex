@@ -51,7 +51,7 @@ const Hero = () => {
 
       {pokemon && (
         <div
-          className="absolute top-[43%] left-[38%] transform -translate-x-1/2 -translate-y-1/2 z-10"
+          className="absolute top-[43%] left-[36%] transform -translate-x-1/2 -translate-y-1/2 z-10"
           style={{
             width: "200px",
             height: "200px",
@@ -65,15 +65,15 @@ const Hero = () => {
       {pokemon && (
         <>
 
-        <div className="absolute top-[64.5%] left-[28%] text-center z-10 p-4 bg-transparent w-[245px]">
-        <h2 className="text-md font-bold">{pokemon.name.toUpperCase()}</h2>
-        <p className="text-black-600 text-sm">ID: {pokemon.id}</p>
+        <div className="absolute top-[66%] left-[23%] text-center z-10 p-1  bg-transparent w-[245px]">
+        <h2 className="text-xxxs font-bold">{pokemon.name.toUpperCase()}</h2>
+        <p className="text-black-600 text-xxs">ID: {pokemon.id}</p>
         </div>
             
        
-        <div className="absolute top-[36%] left-[56.5%] text-center z-10 p-4 bg-transparent w-[245px]">
+        <div className="absolute top-[35.5%] left-[57%] p-4 text-center z-10 bg-transparent w-[245px]  max-h-[90px] overflow-y-scroll">
    
-          <p className="text-sm mt-2">{description}</p>
+          <p className="text-xxxs mt-2">{description}</p>
         </div>
         </>
       )}

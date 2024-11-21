@@ -30,3 +30,12 @@ main,
   background-position: 0 0;
   animation: cloudMovement 30s linear infinite; /* 30s for full loop, adjust as needed */
 }
+
+@font-face {
+  font-family: "Pokemon";
+  src: url("./assets/pokemon.ttf") format("truetype");
+}
+
+html {
+  font-family: "Pokemon", sans-serif;
+}
