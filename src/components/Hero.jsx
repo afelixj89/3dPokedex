@@ -9,6 +9,7 @@ const Hero = () => {
   const [pokemonId, setPokemonId] = useState("pikachu");
   const [pokemon, setPokemon] = useState(null);
   const [description, setDescription] = useState("");
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +38,17 @@ const Hero = () => {
     fetchData();
   }, [pokemonId]);
 
+  const handleInputChange = (event) => {
+    setSearchInput(event.target.value);
+  };
+
+  const handleSearch = () => {
+    if(searchInput.trim()) {
+      setPokemonId(searchInput.trim().toLocaleLowerCase());
+      setSearchInput("");
+    }
+  }
+
   return (
     <section className="w-[100vw] h-[100vh] bg-gray-200">
       <Canvas className="w-full  bg-blue-100 hero-section">
@@ -48,6 +60,20 @@ const Hero = () => {
           <Pokedex scale={25} />
         </Suspense>
       </Canvas>
+
+      <div className="absolute top-[10%] left-[50%] transform -translate-x-1/2 z-10 flex space-x-2">
+        <input
+          type="text"
+          value={searchInput}
+          onChange={handleInputChange}
+          placeholder="Enter Pokemon name or ID"
+          className="p-2 border rounded-md text-sm"
+        ></input>
+        <button
+          onClick={handleSearch}
+          className="p-2 bg-blue-500 text-white rounded-md text-sm"
+        ></button>
+      </div>
 
       {pokemon && (
         <div
@@ -64,17 +90,16 @@ const Hero = () => {
 
       {pokemon && (
         <>
+          <div className="absolute top-[66%] left-[23%] text-center z-10 p-1  bg-transparent w-[245px]">
+            <h2 className="text-xxxs font-bold">
+              {pokemon.name.toUpperCase()}
+            </h2>
+            <p className="text-black-600 text-xxs">ID: {pokemon.id}</p>
+          </div>
 
-        <div className="absolute top-[66%] left-[23%] text-center z-10 p-1  bg-transparent w-[245px]">
-        <h2 className="text-xxxs font-bold">{pokemon.name.toUpperCase()}</h2>
-        <p className="text-black-600 text-xxs">ID: {pokemon.id}</p>
-        </div>
-            
-       
-        <div className="absolute top-[35.5%] left-[57%] p-4 text-center z-10 bg-transparent w-[245px]  max-h-[90px] overflow-y-scroll">
-   
-          <p className="text-xxxs mt-2">{description}</p>
-        </div>
+          <div className="absolute top-[35.5%] left-[57%] p-4 text-center z-10 bg-transparent w-[245px]  max-h-[90px] overflow-y-scroll">
+            <p className="text-xxxs mt-2">{description}</p>
+          </div>
         </>
       )}
     </section>
