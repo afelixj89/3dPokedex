@@ -105,5 +105,5 @@ const Hero = () => {
     </section>
   );
 };
-
+//screen sizes missing
 export default Hero;
